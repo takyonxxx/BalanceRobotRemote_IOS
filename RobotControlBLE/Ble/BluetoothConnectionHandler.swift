@@ -11,7 +11,8 @@ import CoreBluetooth
 
 extension BluetoothService: CBCentralManagerDelegate {
     
-    var expectedNamePrefix: String { return "B" } // 1.
+    //define your remote device name (beginning of, start of name)
+    var expectedNamePrefix: String { return "BCM" } // 1.
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state != .poweredOn {
