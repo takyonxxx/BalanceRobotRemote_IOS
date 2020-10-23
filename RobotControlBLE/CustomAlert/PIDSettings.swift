@@ -61,7 +61,7 @@ class PIDSettings: UIView, Modal {
     
     @objc func changeIValue(_ sender: UISlider)
     {
-        let formatted = String(format: "%.0f", sender.value)
+        let formatted = String(format: "%.1f", sender.value / 10.0)
         var valueInt = UInt8(sender.value)
         let data = Data(bytes: &valueInt, count: MemoryLayout.size(ofValue: valueInt))
         BluetoothService.shared.sendCommand(msgId: mPI, data: data)
@@ -104,7 +104,7 @@ class PIDSettings: UIView, Modal {
     
     @objc func setIValue(value: Float)
     {
-        let formatted = String(format: "%.0f", value)
+        let formatted = String(format: "%.1f", value / 10.0)
         iValueLabel.text = formatted
         iSlider.setValue(Float(value), animated: false)
     }
