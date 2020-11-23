@@ -12,7 +12,8 @@ import CoreBluetooth
 extension BluetoothService: CBCentralManagerDelegate {
     
     //define your remote device name (beginning of, start of name)
-    var expectedNamePrefix: String { return "BCM" } // 1.
+    var expectedNamePrefix: String { return "BlueZ" } // 1.
+    var expectedNamePrefix2: String { return "rasp" } // 1.
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state != .poweredOn {
@@ -27,8 +28,13 @@ extension BluetoothService: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        guard peripheral.name != nil && peripheral.name?.starts(with: self.expectedNamePrefix) ?? false else { return } // 1.
         print("discovered peripheral: \(peripheral.name!)")
+        
+        if ((peripheral.name?.starts(with: self.expectedNamePrefix)) == nil &&
+                (peripheral.name?.starts(with: self.expectedNamePrefix2)) == nil)
+        {
+            return
+        }
         
         self.peripheral = peripheral
         self.flowController?.discoveredPeripheral()

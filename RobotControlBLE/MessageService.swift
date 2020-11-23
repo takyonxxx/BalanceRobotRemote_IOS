@@ -55,7 +55,7 @@ class MessageService
     }
     
     func returnDataValue(intValue: inout Int) -> Data {
-        var data = Data(bytes: &intValue, count: MemoryLayout.size(ofValue: intValue))
+        let data = Data(bytes: &intValue, count: MemoryLayout.size(ofValue: intValue))
         return data
     }
     
