@@ -12,7 +12,7 @@ import CoreBluetooth
 class BluetoothService: NSObject { // 1.
     static let shared = BluetoothService()
     
-    let BLEServiceUuid  = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
+    let BLEServiceUuid =  "00001813-0000-1000-8000-00805F9B34FB"
     let BLERxUuid       = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
     let BLETxUuid       = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
     
